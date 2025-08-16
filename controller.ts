@@ -10,7 +10,7 @@ enum UpdateControllerEvent {
  */
 //% weight=98 color="#D54322" icon="\uf11b"
 //% groups='["Single Player", "Multiplayer"]'
-//% blockGap=8
+//% blockGap=8 advanced=true
 namespace updatecontroller {
     let _players: Controller[];
     game.addScenePopHandler(() => {
