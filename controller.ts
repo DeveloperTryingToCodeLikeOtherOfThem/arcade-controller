@@ -189,6 +189,7 @@ namespace updatecontroller {
         //% vx.shadow="spriteSpeedPicker"
         //% vy.shadow="spriteSpeedPicker"
         //% parts="multiplayer"
+        //% deprecated=true
         moveSprite(sprite: Sprite, vx: number = 100, vy: number = 100) {
             this._moveSpriteInternal(sprite, vx, vy);
         }
@@ -438,6 +439,7 @@ namespace updatecontroller {
     //% group="Single Player"
     //% vx.shadow=spriteSpeedPicker
     //% vy.shadow=spriteSpeedPicker
+           //% deprecated=true
     export function moveSprite(sprite: Sprite, vx: number = 100, vy: number = 100) {
         _player1()._moveSpriteInternal(sprite, vx, vy);
     }
