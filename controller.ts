@@ -245,7 +245,7 @@ namespace updatecontroller {
         //% blockId=ctrlonevent block="on %controller %event"
         //% group="Multiplayer"
         //% help=controller/on-event
-        //% parts="multiplayer"
+        //% parts="multiplayer" deprecated=true
         onEvent(event: UpdateControllerEvent, handler: () => void) {
             control.onEvent(this.id, event, handler);
         }
