@@ -179,13 +179,17 @@ namespace updatecontroller {
         }
 
         /**
-         * Indicates if the button is currently pressed
-         */
+  * Indicates if the button is currently pressed or released
+  */
         //% weight=96 blockGap=8 help=controller/button/is-pressed
-        //% blockId=keyispressed block="is %button **button** pressed %event"
+        //% blockId=keyispressed block="is %button **button** %event"
         //% group="Single Player"
         isPressed(event: UpdateControllerEvent) {
-            return this._pressed;
+            if (event === UpdateControllerEvent.Released) {
+                return !this._pressed;
+            } else {
+                return this._pressed;
+            }
         }
 
         /**
