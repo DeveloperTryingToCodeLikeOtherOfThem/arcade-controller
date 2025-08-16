@@ -121,7 +121,7 @@ namespace updatecontroller {
          */
         //% weight=99 blockGap=8 help=controller/button/on-event
         //% blockId=keyonevent block="on %button **button** %event"
-        //% group="Single Player"
+        //% group="Single Player" deprecated=true
         onEvent(event: UpdateControllerEvent, handler: () => void) {
             const eventHandler = this.getOrCreateHandlerForEvent(event);
             eventHandler.callback = handler;

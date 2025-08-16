@@ -230,7 +230,7 @@ namespace updatecontroller {
         //% blockId=ctrlonbuttonevent block="on %controller %button **button** %event"
         //% group="Multiplayer"
         //% help=controller/on-button-event
-        //% parts="multiplayer"
+        //% parts="multiplayer"  deprecated=true
         onButtonEvent(btn: UpdateControllerButton, event: UpdateControllerEvent, handler: () => void) {
             this.button(btn).onEvent(event, handler);
             updatecontroller.moveSprite(undefined, 0, 0)
