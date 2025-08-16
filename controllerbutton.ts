@@ -8,9 +8,9 @@ enum UpdateControllerEvent {
 }
 
 enum UpdateControllerButton {
-    //% block="{id:controller}A"
+    //% block="{id:updatecontroller}A"
     A = 5,
-    //% block="{id:controller}B"
+    //% block="{id:updatecontroller}B"
     B = 6,
     //% block="left"
     Left = 1,
