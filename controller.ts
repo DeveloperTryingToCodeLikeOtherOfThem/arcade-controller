@@ -233,6 +233,7 @@ namespace updatecontroller {
         //% parts="multiplayer"
         onButtonEvent(btn: UpdateControllerButton, event: UpdateControllerEvent, handler: () => void) {
             this.button(btn).onEvent(event, handler);
+            updatecontroller.moveSprite(undefined, 0, 0)
         }
 
         /**
