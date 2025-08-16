@@ -10,7 +10,8 @@
         "controller.ts",
         "controllerbutton.ts",
         "controlleroverides.ts",
-        "docs/controller.md"
+        "docs/controller.md",
+        "originalcontroller.ts"
     ],
     "testFiles": [
         "test.ts"
