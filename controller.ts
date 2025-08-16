@@ -265,11 +265,11 @@ namespace updatecontroller {
          * Indicates if the button is currently pressed
         */
         //% weight=96 blockGap=8 help=controller/button/is-pressed
-        //% blockId=ctrlispressed block="is %controller %button **button** pressed"
+        //% blockId=ctrlispressed block="is %controller %button **button** pressed %btn"
         //% group="Multiplayer"
         //% parts="multiplayer"
         isPressed(btn: UpdateControllerButton): boolean {
-            return this.button(btn).isPressed();
+            return this.button(btn).isPressed(UpdateControllerEvent.Pressed);
         }
 
         /**
@@ -293,11 +293,11 @@ namespace updatecontroller {
 
             if (this.analog)
                 return (this.right.pressureLevel() - this.left.pressureLevel()) / 512 * ctx.deltaTime * step
-            if (this.left.isPressed()) {
-                if (this.right.isPressed()) return 0
+            if (this.left.isPressed(UpdateControllerEvent.Pressed)) {
+                if (this.right.isPressed(UpdateControllerEvent.Pressed)) return 0
                 else return -step * ctx.deltaTime;
             }
-            else if (this.right.isPressed()) return step * ctx.deltaTime
+            else if (this.right.isPressed(UpdateControllerEvent.Pressed)) return step * ctx.deltaTime
             else return 0
         }
 
@@ -322,11 +322,11 @@ namespace updatecontroller {
 
             if (this.analog)
                 return (this.down.pressureLevel() - this.up.pressureLevel()) / 512 * ctx.deltaTime * step
-            if (this.up.isPressed()) {
-                if (this.down.isPressed()) return 0
+            if (this.up.isPressed(UpdateControllerEvent.Pressed)) {
+                if (this.down.isPressed(UpdateControllerEvent.Pressed)) return 0
                 else return -step * ctx.deltaTime;
             }
-            else if (this.down.isPressed()) return step * ctx.deltaTime
+            else if (this.down.isPressed(UpdateControllerEvent.Pressed)) return step * ctx.deltaTime
             else return 0
         }
 
@@ -342,8 +342,8 @@ namespace updatecontroller {
                 svx = (this.right.pressureLevel() - this.left.pressureLevel()) >> 1
                 svy = (this.down.pressureLevel() - this.up.pressureLevel()) >> 1
             } else {
-                svx = (this.right.isPressed() ? 256 : 0) - (this.left.isPressed() ? 256 : 0)
-                svy = (this.down.isPressed() ? 256 : 0) - (this.up.isPressed() ? 256 : 0)
+                svx = (this.right.isPressed(UpdateControllerEvent.Pressed) ? 256 : 0) - (this.left.isPressed(UpdateControllerEvent.Pressed) ? 256 : 0)
+                svy = (this.down.isPressed(UpdateControllerEvent.Pressed) ? 256 : 0) - (this.up.isPressed(UpdateControllerEvent.Pressed) ? 256 : 0)
             }
 
             let svxInCricle = svx
@@ -405,7 +405,7 @@ namespace updatecontroller {
             const buf = control.createBuffer(offset + 1);
             let b = 0;
             for (let i = 0; this.buttons.length; ++i)
-                b |= (this.buttons[i].isPressed() ? 1 : 0) << i;
+                b |= (this.buttons[i].isPressed(UpdateControllerEvent.Pressed) ? 1 : 0) << i;
             buf[offset] = b
             return buf;
         }
@@ -470,11 +470,11 @@ namespace updatecontroller {
     }
 
     class AnyButton extends Button {
-        isPressed(): boolean {
+        isPressed(event: UpdateControllerEvent): boolean {
             const ctrl = _player1();
 
             for (const b of ctrl.buttons) {
-                if (b.isPressed()) return true;
+                if (b.isPressed(UpdateControllerEvent.Pressed)) return true;
             }
             return false;
         }

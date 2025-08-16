@@ -182,9 +182,9 @@ namespace updatecontroller {
          * Indicates if the button is currently pressed
          */
         //% weight=96 blockGap=8 help=controller/button/is-pressed
-        //% blockId=keyispressed block="is %button **button** pressed"
+        //% blockId=keyispressed block="is %button **button** pressed %event"
         //% group="Single Player"
-        isPressed() {
+        isPressed(event: UpdateControllerEvent) {
             return this._pressed;
         }
 
@@ -193,7 +193,7 @@ namespace updatecontroller {
          */
         pressureLevel() {
             if (control.deviceDalVersion() == "sim") {
-                return this.isPressed() ? 512 : 0
+                return this.isPressed(UpdateControllerEvent.Pressed) ? 512 : 0
                 // once implemented in sim, this could be similar to the one below
             } else {
                 return pressureLevelByButtonId(this.id, -1);
